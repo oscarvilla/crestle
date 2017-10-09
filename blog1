@@ -16,3 +16,31 @@ That's some kind of acces to bash from jupyter notebook, like Jeremy Howard expl
 
 5. I think we need to run some kind of benchmarking, because I perceive Crestle more slow than Floydhub at training. Someone says in the fast.ai's forum that's because of the backend of the file transfer, so that the ImageGenerator method from Keras will take a long.
 
+6. If you are following the Dogs vs cats redux solutions which people have run on AWS, will doesn't run just as is. 
+You have to fix the paths to data and solve a problem about directories structure: inside "test" set directory there have to be other called "unknown". That's because the ImageGenerator method from Keras used in the .test method, use the the last part of the path as the category. 
+
+so, we need to:
+
+6.1. Start a jupyter notebook on Crestle without enable GPU (if you don't want to waste your GPU time) 
+
+6.2. When the notebook is running, start a terminal session by clicking on the ">_new terminal" button (if you make it from notebook the file transfer will take longer)
+
+- on "/courses/fastai/deeplearning" or whichever directory you have write acces, create a dir called "unknown" inside other called "test". You can do it by typing: 
+
+mkdir ~/courses/fastai/deeplearning1/test, 
+
+- and then 
+
+mkdir ~/courses/fastai/deeplearning1/test/unknown.
+
+- now copy all the photos inside of "/datsets/fasta.ai/dogscats/test" to the directory just created (~/courses/fastai/deeplearning1/test/unknown). You can do it by typing:
+
+cp -a /datsets/fasta.ai/dogscats/test/* ~/courses/fastai/deeplearning1/test/unknown.
+
+This will take a long. But when you run 
+
+batches, preds = vgg.test(path+'test', batch_size=batch_size*2)
+
+you'll see the message
+
+Found 12500 images belonging to 1 classes.

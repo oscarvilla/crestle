@@ -1,0 +1,33 @@
+I was a time following the 
+
+1. You can close the tab, even your laptop (desktop, whatever) then open again session in other location and your notebook will be still running there. So that you can start a model training, close your laptop and go away, and open again from wherever.
+
+2. You need to run lesson1 notebook first, because the crestle crew put there some chunks of code in order to:
+	- replace the Keras version from the default to 1.2.2. which is used on the course. Thought in the forum Nurag says "Fast.ai notebooks
+	preinstalled in your account are already set up to work with keras 1.2.2, and you install it as part of lesson 1: https://github.com/anurag/
+	crestle-fastai/blob/master/deeplearning1/nbs/lesson1.ipynb"
+	- fix the path to path = "/datasets/fast.ai/dogscats/"
+
+3. in /datasets/fast.ai there are even the models downloaded
+
+4. If you run just CPU (not GPU enable) will have issues with Theano, some requirements not satisfied (I got the print screen saved).
+
+5. We need to run some kind of benchmarking, because I perceive crestle more slow than floydhub at training... Someone says in the fast.ai forum that's because the file transfer's back end, so that the ImageGenerator take a long.
+
+6. 4096 --> 0.94 acc
+   5696 --> 0.9533 acc
+   9920 --> 9620 acc
+That's just a manual note down of the number of cases trained vs accuracy.
+
+7. Dogs vs cats redux notebook doesn't run just as is. You have to fix the paths to data ... and the problem about known folder inside test one: the ImageGenerator method, used in the .test method, use the path as category. I think so.
+---------------------------------------------------------------
+1. Start a jupyter notebook without enable GPU
+2. When in, start a ">_new terminal" (Personally, I did have to erase the directories that the notebook created 
+before on courses directorie). Then you do need to:
+
+- on /courses/fastai/deeplearning or whichever dir you have write acces, create a dir "unknown" inside other called "test". 
+In my case typed: mkdir ~/courses/fastai/deeplearning1/test, and then mkdir ~/courses/fastai/deeplearning1/test/unknown.
+- now copi all the photos inside of /datsets/fasta.ai/dogscats/test to the directorie just created 
+(~/courses/fastai/deeplearning1/test/unknown). 
+I did it by typing: cp -a /datsets/fasta.ai/dogscats/test/* ~/courses/fastai/deeplearning1/test/unknown. 
+This will take a long.
