@@ -1,0 +1,18 @@
+I was a time following the the Victor's suggestions on the previous blog, so that I have news:
+
+
+1. The first thing I realized it's that you can close the tab, the browser, even your laptop (desktop, whatever), then open again session in other location and your "jupyter notebook" will be still running there. So, that's mean you can start a model training, close your laptop, go away, and open again from wherever.
+
+2. If you are following the fast.ai great course, and you do want to run it on Crestle, you need to run lesson1's notebook first, because the crestle crew did put there some chunks of code in order to: - replace the Keras version from the default to 1.2.2. which is used on the course (Thought in the forum Nurag says "Fast.ai notebooks preinstalled in your account are already set up to work with keras 1.2.2, and you install it as part of lesson 1: https://github.com/anurag/crestle-fastai/blob/master/deeplearning1/nbs/lesson1.ipynb")
+
+3. Then you need to fix the path to the data: path = "/datasets/fast.ai/dogscats/"). There in "/datasets/fast.ai" there are even the models downloaded.
+
+4. If you run jupyter notebooks as is with just CPU (not GPU enabled), you will have issues with Theano because some requirements will be not satisfied. But you can take a chunk of code from other Crestle's notebook to fix it: 
+
+!mkdir -p ~/.keras
+!echo '{"epsilon":1e-07,"floatx":"float32","backend":"theano", "image_dim_ordering": "th"}' > ~/.keras/keras.json
+
+That's some kind of acces to bash from jupyter notebook, like Jeremy Howard explained in lesson2 video.
+
+5. I think we need to run some kind of benchmarking, because I perceive Crestle more slow than Floydhub at training. Someone says in the fast.ai's forum that's because of the backend of the file transfer, so that the ImageGenerator method from Keras will take a long.
+
