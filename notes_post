@@ -1,0 +1,10 @@
+1. Start a jupyter notebook without enable GPU
+2. When in, start a ">_new terminal" (Personally, I did have to erase the directories that the notebook created 
+before on courses directorie). Then you do need to:
+
+- on /courses/fastai/deeplearning or whichever dir you have write acces, create a dir "unknown" inside other called "test". 
+In my case typed: mkdir ~/courses/fastai/deeplearning1/test, and then mkdir ~/courses/fastai/deeplearning1/test/unknown.
+- now copi all the photos inside of /datsets/fasta.ai/dogscats/test to the directorie just created 
+(~/courses/fastai/deeplearning1/test/unknown). 
+I did it by typing: cp -a /datsets/fasta.ai/dogscats/test/* ~/courses/fastai/deeplearning1/test/unknown. 
+This will take a long.
